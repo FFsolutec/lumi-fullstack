@@ -64,7 +64,7 @@ Este projeto foi desenvolvido como parte de um teste prático para o cargo de De
 
    \`\`\`bash
    cd backend
-   npm install
+   node serve.js
    \`\`\`
 
 2. Inicie o servidor backend:
@@ -102,7 +102,7 @@ Os testes no backend garantem que a extração dos dados das faturas esteja func
 
    \`\`\`bash
    cd backend
-   npm test
+   node  test.js
    \`\`\`
 
 ### Testes Frontend
