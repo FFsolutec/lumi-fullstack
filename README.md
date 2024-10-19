@@ -29,29 +29,8 @@ Este projeto foi desenvolvido como parte de um teste prático para o cargo de De
 
 ## Estrutura do Projeto
 
-\`\`\`bash
-root/
-│
-├── backend/
-│ ├── src/
-│ │ ├── routes.js # Rotas da API
-│ │ ├── app.js # Configuração principal do backend
-│ │ ├── utils/
-│ │ │ └── pdfExtractor.js# Lógica para extração de dados de PDFs
-│ │ └── models/
-│ │ └── invoice.js # Modelo da fatura (Invoice) no banco de dados
-│ ├── config/
-│ │ └── database.js # Configurações de conexão com o banco de dados
-│ └── .env # Variáveis de ambiente (ver exemplo abaixo)
-├── frontend/
-│ ├── src/
-│ │ ├── App.js # Componente principal da aplicação frontend
-│ │ ├── UploadFatura.js # Componente para upload de faturas
-│ │ └── EnergyConsumptionChart.js # Gráfico de consumo de energia
-│ └── public/
-│ └── index.html # Template do frontend
-└── README.md # Documentação do projeto
-\`\`\`
+![Descrição da Imagem](https://i.imgur.com/zwOZH7a.png)
+
 
 ## Configuração do Ambiente
 
