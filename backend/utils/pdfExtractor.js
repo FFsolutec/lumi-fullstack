@@ -6,6 +6,10 @@ const extractDataFromPDF = async (pdfBuffer, fieldsMapping) => {
     const extractedData = {};
     const textLines = data.text.split("\n");
 
+    console.log("PDF Content:", data.text); // Verificar o conteúdo bruto do PDF
+    console.log("Field Mapping:", fieldsMapping); // Verificar o mapeamento de campos
+
+    // Iterar sobre o mapeamento para extrair os campos desejados
     Object.keys(fieldsMapping).forEach((field) => {
       const fieldPattern = fieldsMapping[field];
       const matchingLine = textLines.find((line) =>
@@ -13,10 +17,12 @@ const extractDataFromPDF = async (pdfBuffer, fieldsMapping) => {
       );
 
       if (matchingLine) {
-        const valueMatch = matchingLine.match(/(?:R\$?\s?)?[\d,.]+/);
+        console.log(`Matching line found for ${field}:`, matchingLine);
+        const valueMatch = matchingLine.match(/(?:R\$?\s?)?[\d,.]+/); // Ajuste a regex se necessário
         extractedData[field] = valueMatch ? valueMatch[0].trim() : "N/A";
       } else {
-        extractedData[field] = "N/A";
+        // Se não encontrar, apenas não adiciona o campo ao resultado
+        console.warn(`No matching line found for ${field}`);
       }
     });
 

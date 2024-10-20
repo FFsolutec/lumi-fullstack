@@ -1,5 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Bar } from "react-chartjs-2";
+import {
+  Chart,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+
+// Registrar as escalas e elementos necessários
+Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 function EnergyGraph({ energyConsumed, energyCompensated }) {
   const data = {

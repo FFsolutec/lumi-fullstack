@@ -80,10 +80,10 @@ router.post("/upload-fatura", upload.single("file"), async (req, res) => {
 
     const fieldMappings = {
       luz: {
-        clientNumber: "No DO CLIENTE",
-        referenceMonth: "Mês de referência",
+        clientNumber: "Nº DO CLIENTE", // Atualizado
+        referenceMonth: "Referente a", // Ajustado
         energyConsumed: "Energia Elétrica",
-        totalAmount: "Valor Total",
+        totalAmount: "Valor a pagar (R$)", // Ajustado
       },
       agua: {
         clientNumber: "Número do Cliente",
@@ -101,13 +101,16 @@ router.post("/upload-fatura", upload.single("file"), async (req, res) => {
 
     const extractedData = await extractDataFromPDF(pdfBuffer, fieldsMapping);
 
-    // Salvar os dados no banco
-    const newInvoice = await Invoice.create(extractedData);
+    // Responder apenas com os dados que foram extraídos
+    if (Object.keys(extractedData).length === 0) {
+      return res
+        .status(400)
+        .json({ error: "Nenhum dado pôde ser extraído do PDF." });
+    }
 
-    // Responder com os dados salvos
     res.json({
-      message: "Dados extraídos e salvos com sucesso!",
-      data: newInvoice,
+      message: "Dados extraídos com sucesso!",
+      data: extractedData,
     });
   } catch (error) {
     res.status(500).json({ error: "Erro ao extrair dados da fatura." });
